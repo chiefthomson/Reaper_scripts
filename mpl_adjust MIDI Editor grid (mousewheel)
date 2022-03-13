@@ -1,10 +1,10 @@
--- @description Adjust MIDI Editor grid with mousewheel
+-- @description Adjust MIDI Editor grid with mousewheel (polyrhythm edition)
 -- @version 1.0
 -- @original author MPL
 -- @modified by Chief Thomson
--- This script will scroll through everything polyrhythmic
--- I modified this script with the aim to also go through polyrhythmic divisions
--- I contains fixed values from 1,1/2,1/3,1/4,1/5 up to 1/19 and then the usual 1/32,1/64,1/128
+-- This script will browse through odd divisions
+-- I modified MPL's script with the aim to also scroll through polyrhythmic divisions
+-- I contains fixed values which I personally found to be the most useful :)
 
  
   function main()
@@ -16,7 +16,7 @@
     local _,_,_,_,_,_,mouse_scroll  = reaper.get_action_context()
     local dir = (mouse_scroll/math.abs(mouse_scroll))
     --22 values in gridvals
-    local gridvals = {1,0.5,0.33333333333333,0.25,0.2,0.16666666666667,0.14285714285714,0.125,0.11111111111111,0.1,0.090909090909091,0.083333333333333,0.076923076923077,0.071428571428571,0.066666666666667,0.0625,0.058823529411765,0.055555555555556,0.052631578947368,0.03125,0.015625,0.0078125}
+    local gridvals = {1,1/2,1/3,1/4,1/5,1/6,1/7,1/8,1/9,1/10,1/11,1/12,1/13,1/14,1/15,1/16,1/17,1/18,1/19,1/24,1/32,1/64,1/128}
     for i=1,22,1 do
       if gridvals[i] == grid then
         if i+dir > 22 then
